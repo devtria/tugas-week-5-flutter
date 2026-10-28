@@ -26,28 +26,11 @@ class ProfilePage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const CircleAvatar(
-              radius: 50,
-              backgroundColor: Colors.grey,
-              child: Icon(Icons.person, size: 50, color: Colors.white),
-            ),
+            const ProfileAvatar(),
             const SizedBox(height: 16),
-            Column(
-              children: [
-                Text(
-                  userName,
-                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  role,
-                  style: TextStyle(fontSize: 16, color: Colors.grey[700]),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
+            ProfileInfo(name: userName, role: role),
             const SizedBox(height: 24),
+            
             ElevatedButton.icon(
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -68,10 +51,10 @@ class ProfilePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const StatItem(count: '15', label: 'Proyek'),
-                  const SizedBox(width: 24), 
+                  const SizedBox(width: 24),
                   const StatItem(count: '1.2K', label: 'Followers'),
                   const SizedBox(width: 24), 
-                  const StatItem(count: '42', label: 'Following'), 
+                  const StatItem(count: '42', label: 'Following'),
                 ],
               ),
             ),
@@ -85,7 +68,7 @@ class ProfilePage extends StatelessWidget {
             ),
             const Divider(),
             ListView.builder(
-              shrinkWrap: true, 
+              shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: achievements.length,
               itemBuilder: (context, index) {
@@ -102,6 +85,49 @@ class ProfilePage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class ProfileAvatar extends StatelessWidget {
+  const ProfileAvatar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const CircleAvatar(
+      radius: 50,
+      backgroundColor: Colors.grey,
+      child: Icon(Icons.person, size: 50, color: Colors.white),
+    );
+  }
+}
+
+class ProfileInfo extends StatelessWidget {
+  final String name;
+  final String role;
+
+  const ProfileInfo({
+    super.key,
+    required this.name,
+    required this.role,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          name,
+          style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 8),
+        Text(
+          role,
+          style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+          textAlign: TextAlign.center,
+        ),
+      ],
     );
   }
 }
