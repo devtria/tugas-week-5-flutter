@@ -42,22 +42,21 @@ class ProfilePage extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             Container(
-              padding: const EdgeInsets.symmetric(vertical: 12),
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
               decoration: BoxDecoration(
                 color: Colors.blue[50],
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const StatItem(count: '15', label: 'Proyek'),
-                  const SizedBox(width: 24),
-                  const StatItem(count: '1.2K', label: 'Followers'),
-                  const SizedBox(width: 24), 
-                  const StatItem(count: '42', label: 'Following'),
+                  StatItem(count: '15', label: 'Proyek'),
+                  StatItem(count: '1.2K', label: 'Followers'),
+                  StatItem(count: '42', label: 'Following'),
                 ],
               ),
             ),
+            
             const SizedBox(height: 24),
             const Align(
               alignment: Alignment.centerLeft,
