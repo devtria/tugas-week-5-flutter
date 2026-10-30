@@ -15,4 +15,7 @@
 - feat: menambahkan komponen StatItem untuk menampilkan data jumlah dan label "Followers" (1.2K)
 - feat: menambahkan komponen StatItem untuk menampilkan data jumlah dan label "Following" (42) 
 
-### Catatan: Sebelumnya saya sempat salah commit project jadinya commit pertama saya commit diwaktu sore.
+## Commit 4
+- refactor: mengekstrak bagian baris statistik (Row dan Container) menjadi Custom Widget mandiri bernama ProfileStats
+- refactor: menggantikan kode kontainer statistik inline di dalam ProfilePage dengan pemanggilan widget ProfileStats
+- feat: memastikan widget StatItem tetap reusable di dalam ProfileStats untuk menampilkan data Proyek, Followers, dan Following
