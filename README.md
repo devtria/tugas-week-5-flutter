@@ -27,6 +27,6 @@
 - feat: memperbarui judul bagian dan ikon pada ListTile menjadi bertema backend engineering (ikon kode)
 
 ## Commit 6
-feat: membagi ruang tampilan menggunakan dua widget Expanded untuk mengakomodasi dua ListView.builder (backendExperiences dan achievements)
-feat: menerapkan Custom Widget ExperienceCard yang dilengkapi dengan parameter teks judul dan ikon yang reusable
-feat: merapikan struktur tampilan Card dengan menambahkan elevation, padding, serta rounded border
+- feat: membagi ruang tampilan menggunakan dua widget Expanded untuk mengakomodasi dua ListView.builder (backendExperiences dan achievements)
+- feat: menerapkan Custom Widget ExperienceCard yang dilengkapi dengan parameter teks judul dan ikon yang reusable
+- feat: merapikan struktur tampilan Card dengan menambahkan elevation, padding, serta rounded border
