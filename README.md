@@ -19,3 +19,9 @@
 - refactor: mengekstrak bagian baris statistik (Row dan Container) menjadi Custom Widget mandiri bernama ProfileStats
 - refactor: menggantikan kode kontainer statistik inline di dalam ProfilePage dengan pemanggilan widget ProfileStats
 - feat: memastikan widget StatItem tetap reusable di dalam ProfileStats untuk menampilkan data Proyek, Followers, dan Following
+
+## Commit 5
+- refactor: menghapus SingleChildScrollView dari bodi utama agar widget Expanded dapat berfungsi dengan baik pada Column
+- feat: menambahkan variabel list array dummy data baru berupa daftar pengalaman backend engineering (backendExperiences)
+- feat: membungkus ListView.builder dengan widget Expanded di bagian bawah layar untuk menangani daftar item yang dinamis
+- feat: memperbarui judul bagian dan ikon pada ListTile menjadi bertema backend engineering (ikon kode)
