@@ -5,7 +5,14 @@ class ProfilePage extends StatelessWidget {
 
   final String userName = 'M. Satria Nurulloh';
   final String role = 'Mahasiswa Teknik Informatika';
-
+  final List<String> backendExperiences = const [
+    'Backend Developer at Tech Startup (2024 - Present)',
+    'RESTful API Development using Node.js & Express',
+    'Database Management with PostgreSQL & MongoDB',
+    'Microservices Architecture Implementation',
+    'Cloud Deployment using Docker & AWS',
+    'API Security & Authentication with JWT',
+  ];
   final List<String> achievements = const [
     'Imo Bindang 1000',
     'Top Global 1 Indonesia - Ruby',
@@ -22,49 +29,68 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: Colors.blueAccent,
         foregroundColor: Colors.white,
       ),
-      body: SingleChildScrollView(
+      body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ProfileAvatar(),
+            // Bagian atas (Avatar, Info, Tombol, Statistik) disusun statis
+            const Center(child: ProfileAvatar()),
             const SizedBox(height: 16),
-            ProfileInfo(name: userName, role: role),
+            Center(child: ProfileInfo(name: userName, role: role)),
             const SizedBox(height: 24),
             
-            ElevatedButton.icon(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Fitur edit belum aktif pada modul statis.'))
-                );
-              },
-              icon: const Icon(Icons.edit),
-              label: const Text('Edit Profil'),
-            ),
-            const SizedBox(height: 24),
-            const ProfileStats(),
-            const SizedBox(height: 24),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Pengalaman Kerja',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            Center(
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Fitur edit belum aktif pada modul statis.'))
+                  );
+                },
+                icon: const Icon(Icons.edit),
+                label: const Text('Edit Profil'),
               ),
             ),
+            const SizedBox(height: 24),
+            
+            const ProfileStats(),
+            
+            const SizedBox(height: 24),
+            const Text(
+              'Pengalaman Backend Engineering',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             const Divider(),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: achievements.length,
-              itemBuilder: (context, index) {
-                return Card(
-                  elevation: 2,
-                  margin: const EdgeInsets.symmetric(vertical: 6),
-                  child: ListTile(
-                    leading: const Icon(Icons.work, color: Colors.blueAccent),
-                    title: Text(achievements[index]),
-                  ),
-                );
-              },
+            
+            Expanded(
+              child: ListView.builder(
+                itemCount: backendExperiences.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    elevation: 2,
+                    margin: const EdgeInsets.symmetric(vertical: 6),
+                    child: ListTile(
+                      leading: const Icon(Icons.code, color: Colors.blueAccent),
+                      title: Text(backendExperiences[index]),
+                    ),
+                  );
+                },
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: achievements.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    elevation: 2,
+                    margin: const EdgeInsets.symmetric(vertical: 6),
+                    child: ListTile(
+                      leading: const Icon(Icons.code, color: Colors.blueAccent),
+                      title: Text(achievements[index]),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),
