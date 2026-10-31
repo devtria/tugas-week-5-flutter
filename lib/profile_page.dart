@@ -10,6 +10,52 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   String userName = 'M. Satria Nurulloh';
   final String role = 'Mahasiswa Teknik Informatika';
+  final TextEditingController _nameController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
+
+  void _showEditProfileDialog(BuildContext context) {
+    _nameController.text = userName; 
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Edit Profil'),
+          content: TextFormField(
+            controller: _nameController,
+            decoration: const InputDecoration(
+              labelText: 'Nama Lengkap',
+              border: OutlineInputBorder(),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); 
+              },
+              child: const Text('Batal'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  userName = _nameController.text; 
+                });
+                Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Nama profil berhasil diperbarui!')),
+                );
+              },
+              child: const Text('Simpan'),
+            ),
+          ],
+        );
+      },
+    );
+  }
   
   final List<String> backendExperiences = const [
     'Backend Developer di Google and Apple :)',
@@ -48,14 +94,7 @@ class _ProfilePageState extends State<ProfilePage> {
             
             Center(
               child: ElevatedButton.icon(
-                onPressed: () {
-                  setState(() {
-                    userName = 'M. Satria Nurulloh (Updated)';
-                  });
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Nama berhasil diperbarui secara dinamis!'))
-                  );
-                },
+                onPressed: () => _showEditProfileDialog(context),
                 icon: const Icon(Icons.edit),
                 label: const Text('Edit Profil'),
               ),
@@ -165,9 +204,9 @@ class ProfileStats extends StatelessWidget {
       child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          StatItem(count: '15', label: 'Proyek'),
-          StatItem(count: '1.2K', label: 'Followers'),
-          StatItem(count: '42', label: 'Following'),
+          StatItem(count: '99', label: 'Proyek'),
+          StatItem(count: '99 Juta', label: 'Umat'),
+          StatItem(count: '9', label: 'Mengikuti'),
         ],
       ),
     );
