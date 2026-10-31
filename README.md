@@ -34,4 +34,10 @@
 ## Commit 7
 - refactor: mengubah ProfilePage dari StatelessWidget menjadi StatefulWidget
 - feat: mendeklarasikan variabel userName di dalam state class (_ProfilePageState) agar data bersifat dinamis
-- feat: menambahkan fungsi setState pada tombol Edit Profil untuk memperbarui nama secara interaktif dan menampilkan SnackBar   
+- feat: menambahkan fungsi setState pada tombol Edit Profil untuk memperbarui nama secara interaktif dan menampilkan SnackBar
+
+## Commit 8
+- feat: mendefinisikan TextEditingController untuk mengelola input teks pada form edit profil
+- feat: menambahkan fungsi showDialog dan AlertDialog pada onPressed tombol Edit Profil
+- feat: menyematkan TextFormField di dalam konten dialog untuk mengubah nama pengguna
+- feat: menambahkan tombol Batal dan Simpan yang memanfaatkan setState untuk memperbarui userName secara real-time
