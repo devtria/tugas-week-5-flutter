@@ -30,3 +30,8 @@
 - feat: membagi ruang tampilan menggunakan dua widget Expanded untuk mengakomodasi dua ListView.builder (backendExperiences dan achievements)
 - feat: menerapkan Custom Widget ExperienceCard yang dilengkapi dengan parameter teks judul dan ikon yang reusable
 - feat: merapikan struktur tampilan Card dengan menambahkan elevation, padding, serta rounded border
+
+## Commit 7
+- refactor: mengubah ProfilePage dari StatelessWidget menjadi StatefulWidget
+- feat: mendeklarasikan variabel userName di dalam state class (_ProfilePageState) agar data bersifat dinamis
+- feat: menambahkan fungsi setState pada tombol Edit Profil untuk memperbarui nama secara interaktif dan menampilkan SnackBar   
