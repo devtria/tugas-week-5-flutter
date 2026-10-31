@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
-  final String userName = 'M. Satria Nurulloh';
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  String userName = 'M. Satria Nurulloh';
   final String role = 'Mahasiswa Teknik Informatika';
   
   final List<String> backendExperiences = const [
@@ -36,7 +41,6 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Bagian atas (Avatar, Info, Tombol, Statistik) disusun statis
             const Center(child: ProfileAvatar()),
             const SizedBox(height: 16),
             Center(child: ProfileInfo(name: userName, role: role)),
@@ -45,8 +49,11 @@ class ProfilePage extends StatelessWidget {
             Center(
               child: ElevatedButton.icon(
                 onPressed: () {
+                  setState(() {
+                    userName = 'M. Satria Nurulloh (Updated)';
+                  });
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Fitur edit belum aktif pada modul statis.'))
+                    const SnackBar(content: Text('Nama berhasil diperbarui secara dinamis!'))
                   );
                 },
                 icon: const Icon(Icons.edit),
@@ -64,7 +71,6 @@ class ProfilePage extends StatelessWidget {
             ),
             const Divider(),
             
-            // ListView pertama dibungkus Expanded untuk pengalaman backend
             Expanded(
               child: ListView.builder(
                 itemCount: backendExperiences.length,
@@ -84,7 +90,6 @@ class ProfilePage extends StatelessWidget {
             ),
             const Divider(),
 
-            // ListView kedua dibungkus Expanded untuk achievements
             Expanded(
               child: ListView.builder(
                 itemCount: achievements.length,
